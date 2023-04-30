@@ -1,0 +1,23 @@
+.check_input{
+    margin: .5rem 0rem;
+    padding: .5rem;
+    border: .5px solid #DEE1E6;
+}
+.title_check{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .3rem 0rem;
+    overflow: hidden;
+}
+
+.input_body{
+    display: none;
+}
+.input_body_show{
+    display: block !important;
+}
+.checkbox{
+    width: 20px;
+    height: 20px;
+}
