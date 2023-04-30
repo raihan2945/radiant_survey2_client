@@ -164,7 +164,10 @@ const BasicHookForm = () => {
     axios.post(`/api/register`, data).then((res) => {
       console.log("response is : ", res);
       openModal()
-    });
+    })
+    .catch(err=>{
+      console.log(err)
+    })
 
     // toast.success(<SuccessToast data={data} />, { hideProgressBar: true });
   };
