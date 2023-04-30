@@ -162,7 +162,7 @@ const BasicHookForm = () => {
       <Card>
         <CardHeader style={{display:'flex', alignItems:"center", gap:"1rem"}}>
           <img style={{width:"4rem",height:"4rem"}} src="images/logo.jpg"/>
-          <CardTitle tag="h4" style={{fontSize:"2rem"}}>Stroke awareness initiative</CardTitle>
+          <CardTitle tag="h4" style={{fontSize:"1.6rem"}}>Stroke awareness initiative</CardTitle>
         </CardHeader>
         <CardBody>
           <Form onSubmit={handleSubmit(onSubmit)}>
