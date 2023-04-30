@@ -14,6 +14,10 @@ import {
   FormGroup,
   Input,
   Label,
+  Modal,
+  ModalFooter,
+  ModalHeader,
+  ModalBody,
 } from "reactstrap";
 import CheckInput from "./CheckInput";
 import { basr_url } from "./url";
@@ -48,9 +52,21 @@ const BasicHookForm = () => {
   const { register, errors, handleSubmit } = useForm();
   const [interestField, setInterestField] = useState(false);
 
+  const [modal, setModal] = useState(false);
+
+  // Toggle for Modal
+  const clickModal = () => setModal(!modal);
+  const openModal = ()=>{
+    setModal(true)
+  }
+  const closeModal = ()=>{
+    setModal(false);
+    window.location.reload(false);
+  }
+
   const [havePatient, setHavePateint] = useState(null);
-  const [aware, setAware] =useState(null);
-  const [thrombolysis, setThrombolysis] = useState(null)
+  const [aware, setAware] = useState(null);
+  const [thrombolysis, setThrombolysis] = useState(null);
   const [fast, setFast] = useState(null);
 
   let allCheckBox = [
@@ -121,20 +137,21 @@ const BasicHookForm = () => {
     // data.f_checked = allCheckBox[5].checked;
     // data.g_checked = allCheckBox[6].checked;
     // data.h_checked = allCheckBox[7].checked;
+    
     // data.i_checked = allCheckBox[8].checked;
-    data.havePatient = havePatient
-    data.fast = fast
-    data.thrombolysis = thrombolysis
-    data.aware = aware
+    data.havePatient = havePatient;
+    data.fast = fast;
+    data.thrombolysis = thrombolysis;
+    data.aware = aware;
     console.log("DATA IS : ", data);
 
-    if(!data?.name){
-      alert("please enter your name first")
-      return
+    if (!data?.name) {
+      alert("please enter your name first");
+      return;
     }
-    if(!data?.email){
-      alert("please enter your email")
-      return
+    if (!data?.email) {
+      alert("please enter your email");
+      return;
     }
 
     const config = {
@@ -146,7 +163,7 @@ const BasicHookForm = () => {
 
     axios.post(`${basr_url}/api/register`, data).then((res) => {
       console.log("response is : ", res);
-      window.location.reload(false);
+      openModal()
     });
 
     // toast.success(<SuccessToast data={data} />, { hideProgressBar: true });
@@ -164,9 +181,16 @@ const BasicHookForm = () => {
   return (
     <>
       <Card>
-        <CardHeader style={{display:'flex', alignItems:"center", gap:"1rem"}}>
-          <img style={{width:"4rem",height:"4rem"}} src="images/logo.jpg"/>
-          <CardTitle tag="h4" style={{fontSize:"1.6rem"}}>Stroke awareness initiative</CardTitle>
+        <CardHeader
+          style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+        >
+          <img
+            style={{ width: "4rem", height: "4rem" }}
+            src="images/logo.jpg"
+          />
+          <CardTitle tag="h4" style={{ fontSize: "1.6rem" }}>
+            Stroke awareness initiative
+          </CardTitle>
         </CardHeader>
         <CardBody>
           <Form onSubmit={handleSubmit(onSubmit)}>
@@ -246,7 +270,7 @@ const BasicHookForm = () => {
                 }}
               >
                 <p style={{ fontWeight: "500" }}>
-                Do you have any stroke patients in your family?
+                  Do you have any stroke patients in your family?
                 </p>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <div
@@ -300,7 +324,7 @@ const BasicHookForm = () => {
                 }}
               >
                 <p style={{ fontWeight: "500" }}>
-                Do you know about ACT F.A.S.T?
+                  Do you know about ACT F.A.S.T?
                 </p>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <div
@@ -354,7 +378,7 @@ const BasicHookForm = () => {
                 }}
               >
                 <p style={{ fontWeight: "500" }}>
-                Do you know about the time of thrombolysis?
+                  Do you know about the time of thrombolysis?
                 </p>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <div
@@ -396,7 +420,7 @@ const BasicHookForm = () => {
                 </div>
               </div>
             </FormGroup>
-     
+
             <FormGroup>
               <div
                 className=""
@@ -409,7 +433,7 @@ const BasicHookForm = () => {
                 }}
               >
                 <p style={{ fontWeight: "500" }}>
-                Are you aware of the thrombolysis treatment in Stroke?
+                  Are you aware of the thrombolysis treatment in Stroke?
                 </p>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <div
@@ -573,7 +597,29 @@ const BasicHookForm = () => {
           </Form>
         </CardBody>
       </Card>
-    <img style={{width:"100%",height:"auto", objectFit:"contain", marginTop:"1rem"}} src="images/bottom_image.jpg"/>
+      <img
+        style={{
+          width: "100%",
+          height: "auto",
+          objectFit: "contain",
+          marginTop: "1rem",
+        }}
+        src="images/bottom_image.jpg"
+      />
+
+      <Modal
+        isOpen={modal}
+        toggle={closeModal}
+        modalTransition={{ timeout: 500 }}
+        centered={true}
+      >
+        <ModalBody>
+          <h1 style={{fontSize:"1.5rem", color:"#58AB27"}}>Congratulation !</h1>
+         <hr/>
+          <h4 style={{fontSize:"1.2rem"}}>Your data has been submitted</h4>
+          <h6 style={{fontSize:".9rem"}}>Please check your mail to collect secret code</h6>
+        </ModalBody>
+      </Modal>
     </>
   );
 };
