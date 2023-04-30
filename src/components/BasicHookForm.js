@@ -50,6 +50,8 @@ const BasicHookForm = () => {
 
   const [havePatient, setHavePateint] = useState(null);
   const [aware, setAware] =useState(null);
+  const [thrombolysis, setThrombolysis] = useState(null)
+  const [fast, setFast] = useState(null);
 
   let allCheckBox = [
     {
@@ -121,6 +123,8 @@ const BasicHookForm = () => {
     // data.h_checked = allCheckBox[7].checked;
     // data.i_checked = allCheckBox[8].checked;
     data.havePatient = havePatient
+    data.fast = fast
+    data.thrombolysis = thrombolysis
     data.aware = aware
     console.log("DATA IS : ", data);
 
@@ -285,22 +289,114 @@ const BasicHookForm = () => {
               </div>
             </FormGroup>
             <FormGroup>
-              <Label for="chamber">
-                If yes, which relative is the stroke patient
-              </Label>
-              <input
+              <div
+                className=""
                 style={{
                   width: "100%",
-                  padding: ".3rem 0.3rem",
-                  border: ".5px solid #DEE1E6",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "start",
                 }}
-                id="chamber"
-                name="chamber"
-                {...register("relative_patient")}
-                // invalid={errors.firstNameBasic && true}
-                placeholder="Enter relative is the stroke patient"
-              />
+              >
+                <p style={{ fontWeight: "500" }}>
+                Do you know about ACT F.A.S.T?
+                </p>
+                <div style={{ display: "flex", gap: "1rem" }}>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      gap: ".5rem",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      style={{ width: "20px", height: "20px" }}
+                      onChange={(e) => setFast(e.target.value)}
+                      // checked={interestField}
+                      type="radio"
+                      name="fast"
+                      value="yes"
+                    />{" "}
+                    Yes
+                  </div>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      gap: ".5rem",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      style={{ width: "20px", height: "20px" }}
+                      onChange={(e) => setFast(e.target.value)}
+                      // checked={interestField}
+                      type="radio"
+                      value="no"
+                      name="fast"
+                    />
+                    No
+                  </div>
+                </div>
+              </div>
             </FormGroup>
+            <FormGroup>
+              <div
+                className=""
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "start",
+                }}
+              >
+                <p style={{ fontWeight: "500" }}>
+                Do you know about the time of thrombolysis?
+                </p>
+                <div style={{ display: "flex", gap: "1rem" }}>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      gap: ".5rem",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      style={{ width: "20px", height: "20px" }}
+                      onChange={(e) => setThrombolysis(e.target.value)}
+                      // checked={interestField}
+                      type="radio"
+                      name="thrombolysis"
+                      value="yes"
+                    />{" "}
+                    Yes
+                  </div>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      gap: ".5rem",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      style={{ width: "20px", height: "20px" }}
+                      onChange={(e) => setThrombolysis(e.target.value)}
+                      // checked={interestField}
+                      type="radio"
+                      value="no"
+                      name="thrombolysis"
+                    />
+                    No
+                  </div>
+                </div>
+              </div>
+            </FormGroup>
+     
             <FormGroup>
               <div
                 className=""
