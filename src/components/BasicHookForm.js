@@ -161,7 +161,7 @@ const BasicHookForm = () => {
       },
     };
 
-    axios.post(`/api/register`, data).then((res) => {
+    axios.post(`${basr_url}/api/register`, data).then((res) => {
       console.log("response is : ", res);
       openModal()
     })
