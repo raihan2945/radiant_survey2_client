@@ -160,8 +160,9 @@ const BasicHookForm = () => {
   return (
     <>
       <Card>
-        <CardHeader>
-          <CardTitle tag="h4">Stroke awareness initiative</CardTitle>
+        <CardHeader style={{display:'flex', alignItems:"center", gap:"1rem"}}>
+          <img style={{width:"4rem",height:"4rem"}} src="images/logo.jpg"/>
+          <CardTitle tag="h4" style={{fontSize:"2rem"}}>Stroke awareness initiative</CardTitle>
         </CardHeader>
         <CardBody>
           <Form onSubmit={handleSubmit(onSubmit)}>
@@ -375,7 +376,7 @@ const BasicHookForm = () => {
             {/* 5. Do you have any stroke patients in your family
             6. If yes, which relative is the stroke patient
             7. Are you aware of the thrombolysis treatment in Stroke
-            8. How many stroke patients does your hospital deal every month? */}
+          8. How many stroke patients does your hospital deal every month? */}
 
             {/* <div
               className=""
@@ -386,79 +387,79 @@ const BasicHookForm = () => {
                 alignItems: "flex-start",
                 justifyContent: "start",
               }}
-            >
+              >
               <p style={{ fontWeight: "500" }}>
-                1. Do you have any academic interest in scientific ground?
+              1. Do you have any academic interest in scientific ground?
               </p>
               <div style={{display:"flex", gap:"1rem"}}>
               <div
-                style={{
+              style={{
                   width: "100%",
                   display: "flex",
                   gap: ".5rem",
                   alignItems: "center",
                 }}
-              >
+                >
                 <input
-                  style={{ width: "20px", height: "20px" }}
-                  onChange={(e) => setInterestField(e.target.checked)}
-                  checked={interestField}
-                  type="checkBox"
-                  name="check"
+                style={{ width: "20px", height: "20px" }}
+                onChange={(e) => setInterestField(e.target.checked)}
+                checked={interestField}
+                type="checkBox"
+                name="check"
                 />{" "}
                 Yes
               </div>
               <div
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  gap: ".5rem",
-                  alignItems: "center",
-                }}
+              style={{
+                width: "100%",
+                display: "flex",
+                gap: ".5rem",
+                alignItems: "center",
+              }}
               >
-                <input
+              <input
                   style={{ width: "20px", height: "20px" }}
                   // onChange={(e) => setInterestField(e.target.checked)}
                   // checked={interestField}
                   type="checkBox"
                   name="check"
-                />{" "}
-                No
-              </div>
-              </div>
-
-            </div> */}
+                  />{" "}
+                  No
+                  </div>
+                  </div>
+                  
+                </div> */}
 
             {/* {interestField && (
               <div>
                 <p
-                  style={{
-                    textAlign: "start",
-                    margin: ".5rem 0rem",
-                    fontWeight: "500",
-                  }}
+                style={{
+                  textAlign: "start",
+                  margin: ".5rem 0rem",
+                  fontWeight: "500",
+                }}
                 >
-                  2. In which specific field do you have the Interest? (You can
+                2. In which specific field do you have the Interest? (You can
                   choose multiple options){" "}
-                </p>
-                <div>
+                  </p>
+                  <div>
                   {allCheckBox.map((checkItem, index) => {
                     return (
                       <CheckInput
-                       key={checkItem.id}
-                        index={index}
+                      key={checkItem.id}
+                      index={index}
                         changeChecked={changeChecked}
                         title={checkItem.title}
                         id={checkItem.id}
                         checked={checkItem.checked}
                         name={checkItem.name}
                         register={register(checkItem.name)}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            )} */}
+                        />
+                        );
+                      })}
+                      </div>
+                      </div>
+                    )} */}
 
             <FormGroup className="d-flex mb-0">
               <div
@@ -476,6 +477,7 @@ const BasicHookForm = () => {
           </Form>
         </CardBody>
       </Card>
+    <img style={{width:"100%",height:"auto", objectFit:"contain", marginTop:"1rem"}} src="images/bottom_image.jpg"/>
     </>
   );
 };
