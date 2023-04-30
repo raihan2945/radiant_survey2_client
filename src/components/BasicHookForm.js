@@ -124,6 +124,15 @@ const BasicHookForm = () => {
     data.aware = aware
     console.log("DATA IS : ", data);
 
+    if(!data?.name){
+      alert("please enter your name first")
+      return
+    }
+    if(!data?.email){
+      alert("please enter your email")
+      return
+    }
+
     const config = {
       headers: {
         "Access-Control-Allow-Origin": "*",
