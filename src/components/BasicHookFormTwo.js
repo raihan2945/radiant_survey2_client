@@ -22,7 +22,6 @@ import {
 import CheckInput from "./CheckInput";
 import { basr_url } from "./url";
 
-
 const BasicHookFormTwo = () => {
   const { register, errors, handleSubmit } = useForm();
   const [interestField, setInterestField] = useState(false);
@@ -31,13 +30,13 @@ const BasicHookFormTwo = () => {
 
   // Toggle for Modal
   const clickModal = () => setModal(!modal);
-  const openModal = ()=>{
-    setModal(true)
-  }
-  const closeModal = ()=>{
+  const openModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
     setModal(false);
     window.location.reload(false);
-  }
+  };
 
   const [nocturnal_polyuria, setNocturnal_polyuria] = useState(null);
   const [lower_production, setLower_production] = useState(null);
@@ -45,7 +44,6 @@ const BasicHookFormTwo = () => {
   const [minirin_melt_level, setMinirin_melt_level] = useState(null);
 
   const onSubmit = (data) => {
-  
     data.nocturnal_polyuria = nocturnal_polyuria;
     data.lower_production = lower_production;
     data.minirin_melt = minirin_melt;
@@ -53,14 +51,14 @@ const BasicHookFormTwo = () => {
 
     // console.log("DATA IS : ", data);
 
-    // if (!data?.name) {
-    //   alert("please enter your name first");
-    //   return;
-    // }
-    // if (!data?.email) {
-    //   alert("please enter your email");
-    //   return;
-    // }
+    if (!data?.name) {
+      alert("please enter your name first");
+      return;
+    }
+    if (!data?.mobile) {
+      alert("please enter your mobile");
+      return;
+    }
 
     const config = {
       headers: {
@@ -69,13 +67,15 @@ const BasicHookFormTwo = () => {
       },
     };
 
-    axios.post(`${basr_url}/api/suervey_2`, data).then((res) => {
-      // console.log("response is : ", res);
-      openModal()
-    })
-    .catch(err=>{
-      console.log(err)
-    })
+    axios
+      .post(`${basr_url}/api/suervey_2`, data)
+      .then((res) => {
+        // console.log("response is : ", res);
+        openModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     // toast.success(<SuccessToast data={data} />, { hideProgressBar: true });
   };
@@ -100,11 +100,109 @@ const BasicHookFormTwo = () => {
             src="images/logo2.jpg"
           />
           <CardTitle tag="h4" style={{ fontSize: "1.6rem" }}>
-          Nocturia Awareness
+            Nocturia Awareness
           </CardTitle>
         </CardHeader>
         <CardBody>
           <Form onSubmit={handleSubmit(onSubmit)}>
+            <FormGroup>
+              <Label for="name">Name</Label>
+              <input
+                style={{
+                  width: "100%",
+                  padding: ".3rem 0.3rem",
+                  border: ".5px solid #DEE1E6",
+                }}
+                id="name"
+                name="name"
+                {...register("name")}
+                // invalid={errors.name && true}
+                // invalid={errors.firstNameBasic && true}
+                placeholder="Enter your name"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="mobile">Mobile</Label>
+              <input
+                style={{
+                  width: "100%",
+                  padding: ".3rem 0.3rem",
+                  border: ".5px solid #DEE1E6",
+                }}
+                id="mobile"
+                name="mobile"
+                {...register("mobile")}
+                // invalid={errors.name && true}
+                // invalid={errors.firstNameBasic && true}
+                placeholder="Enter your mobile"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="designation">Designation</Label>
+              <input
+                style={{
+                  width: "100%",
+                  padding: ".3rem 0.3rem",
+                  border: ".5px solid #DEE1E6",
+                }}
+                id="designation"
+                name="designation"
+                {...register("designation")}
+                // invalid={errors.name && true}
+                // invalid={errors.firstNameBasic && true}
+                placeholder="Enter your designation"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="specialty">Specialty</Label>
+              <input
+                style={{
+                  width: "100%",
+                  padding: ".3rem 0.3rem",
+                  border: ".5px solid #DEE1E6",
+                }}
+                id="specialty"
+                name="specialty"
+                {...register("specialty")}
+                // invalid={errors.name && true}
+                // invalid={errors.firstNameBasic && true}
+                placeholder="Enter your specialty"
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="institute">Institute</Label>
+              <input
+                style={{
+                  width: "100%",
+                  padding: ".3rem 0.3rem",
+                  border: ".5px solid #DEE1E6",
+                }}
+                id="institute"
+                name="institute"
+                {...register("institute")}
+                // invalid={errors.name && true}
+                // invalid={errors.firstNameBasic && true}
+                placeholder="Enter your institute"
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="email">Email</Label>
+              <input
+                style={{
+                  width: "100%",
+                  padding: ".3rem 0.3rem",
+                  border: ".5px solid #DEE1E6",
+                }}
+                id="email"
+                name="email"
+                {...register("email")}
+                // invalid={errors.name && true}
+                // invalid={errors.firstNameBasic && true}
+                placeholder="Enter your email"
+              />
+            </FormGroup>
 
             <FormGroup>
               <div
@@ -118,7 +216,8 @@ const BasicHookFormTwo = () => {
                 }}
               >
                 <p style={{ fontWeight: "500" }}>
-                1.	Do you agree that, Nocturnal polyuria is the predominant factor for Nocturia and Primary Nocturnal Enuresis (PNE)?
+                  1. Do you agree that, Nocturnal polyuria is the predominant
+                  factor for Nocturia and Primary Nocturnal Enuresis (PNE)?
                 </p>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <div
@@ -172,7 +271,8 @@ const BasicHookFormTwo = () => {
                 }}
               >
                 <p style={{ fontWeight: "500" }}>
-                2.	Lower production of Arginine Vasopressin hormone at night causes nocturnal polyuria. Is the statement correct?
+                  2. Lower production of Arginine Vasopressin hormone at night
+                  causes nocturnal polyuria. Is the statement correct?
                 </p>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <div
@@ -226,7 +326,9 @@ const BasicHookFormTwo = () => {
                 }}
               >
                 <p style={{ fontWeight: "500" }}>
-                3.	Do you know that Minirin Melt is the only available synthetic melt formulation of arginine vasopressin in Bangladesh?
+                  3. Do you know that Minirin Melt is the only available
+                  synthetic melt formulation of arginine vasopressin in
+                  Bangladesh?
                 </p>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <div
@@ -280,7 +382,8 @@ const BasicHookFormTwo = () => {
                 }}
               >
                 <p style={{ fontWeight: "500" }}>
-                4.	Minirin Melt has Level 1, Grade A recommendation for Nocturia & PNE.
+                  4. Minirin Melt has Level 1, Grade A recommendation for
+                  Nocturia & PNE.
                 </p>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <div
@@ -347,9 +450,11 @@ const BasicHookFormTwo = () => {
         centered={true}
       >
         <ModalBody>
-          <h1 style={{fontSize:"1.5rem", color:"#58AB27"}}>Congratulation !</h1>
-         <hr/>
-          <h4 style={{fontSize:"1.2rem"}}>Your data has been submitted</h4>
+          <h1 style={{ fontSize: "1.5rem", color: "#58AB27" }}>
+            Congratulation !
+          </h1>
+          <hr />
+          <h4 style={{ fontSize: "1.2rem" }}>Your data has been submitted</h4>
           {/* <h6 style={{fontSize:".9rem"}}>Please check your mail to collect secret code</h6> */}
         </ModalBody>
       </Modal>
