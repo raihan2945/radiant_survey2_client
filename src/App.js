@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" index  element={<BasicHookForm/>}></Route>
           <Route path="/survey_2" index  element={<BasicHookFormTwo/>}></Route>
-          <Route path="/survey_3" index  element={<Survey3/>}></Route>
+          <Route path="/doctor_wish" index  element={<Survey3/>}></Route>
         </Routes>
       </div>
 

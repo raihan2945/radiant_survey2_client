@@ -45,7 +45,7 @@ const FirstPart = ({ setPart, name, setName, mio_code, setMio_code }) => {
             MIO Code
           </label>
           <input
-            type="password"
+            type="text"
             className="form-control"
             // id="exampleInputPassword1"
             value={mio_code}

@@ -4,10 +4,26 @@ import SecondPart from "./SecondPart";
 import { basr_url } from "../url";
 import axios from "axios";
 
+import {
+    Modal,
+    ModalBody,
+  } from "reactstrap";
+
 const Survey3 = () => {
   const [part, setPart] = useState("first");
 
   const signatureRef = useRef();
+
+  const [modal, setModal] = useState(false);
+
+  const openModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+    window.location.reload(false);
+  };
+
 
   const [name, setName] = useState(null);
   const [mio_code, setMio_code] = useState(null);
@@ -18,10 +34,9 @@ const Survey3 = () => {
   const [selectedSignatureImage, setSelectedSignatureImage] = useState(null);
 
   const submit = () => {
-    console.log("data is : ", selectedImage)
+    // console.log("data is : ", selectedImage);
 
     // const formData = new FormData();
-    
 
     // formData.append("name", name);
     // formData.append("mio_code", mio_code);
@@ -29,34 +44,34 @@ const Survey3 = () => {
     // formData.append("signature", selectedSignatureImage);
     // formData.append("profile", selectedImage);
 
-    if(!selectedImage){
-        alert("Please Upload a selfie photo")
-        return
+    if (!selectedImage) {
+      alert("Please Upload a selfie photo");
+      return;
     }
-    if(!wishText){
-        alert("Please write wish text")
-        return
+    if (!wishText) {
+      alert("Please write wish text");
+      return;
     }
-    if(!selectedSignatureImage && !signatureRef?.current){
-        alert("Please Upload or write digital signature")
-        return
+    if (!selectedSignatureImage && !signatureRef?.current) {
+      alert("Please Upload or write digital signature");
+      return;
     }
 
     const data = {
-        name:name,
-        mio_code: mio_code,
-        wish:wishText,
-        signature: selectedSignatureImage || signatureRef.current.toDataURL(),
-        profile:selectedImage
-    }
+      name: name,
+      mio_code: mio_code,
+      wish: wishText,
+      signature: selectedSignatureImage || signatureRef.current.toDataURL(),
+      profile: selectedImage,
+    };
 
     // return
 
     axios
-      .post(`${basr_url}/api/suervey_3`, data )
+      .post(`${basr_url}/api/suervey_3`, data)
       .then((res) => {
         console.log("response is : ", res);
-        //   openModal();
+          openModal();
       })
       .catch((err) => {
         console.log(err);
@@ -85,6 +100,22 @@ const Survey3 = () => {
           submit={submit}
         />
       )}
+
+      <Modal
+        isOpen={modal}
+        toggle={closeModal}
+        modalTransition={{ timeout: 500 }}
+        centered={true}
+      >
+        <ModalBody>
+          <h1 style={{ fontSize: "1.5rem", color: "#58AB27" }}>
+            Thank You!
+          </h1>
+          <hr />
+          <h4 style={{ fontSize: "1.2rem" }}>Your wish has been submitted</h4>
+          {/* <h6 style={{fontSize:".9rem"}}>Please check your mail to collect secret code</h6> */}
+        </ModalBody>
+      </Modal>
     </div>
   );
 };
