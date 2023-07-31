@@ -1,0 +1,57 @@
+.selfi {
+    text-align: center;
+    padding: 20px;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  .uploaded-image {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .upload-label {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hide the default file input */
+  .upload-input {
+    display: none;
+  }
+  
+  /* Style the file input label when hovering over it */
+  .upload-label:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the file input label when it's focused */
+  .upload-label:focus {
+    outline: none;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+  }
+
+  .signature {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  .signatureCanvas {
+    border: 2px solid black;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-right: 10px;
+  }
