@@ -59,6 +59,7 @@ const SecondPart = ({
     // Do something with the signature image, e.g., send it to the server, save it in state, etc.
     console.log(signatureImage);
   };
+  
 
   return (
     <div
