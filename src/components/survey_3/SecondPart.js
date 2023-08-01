@@ -14,7 +14,18 @@ const SecondPart = ({
   const fileInputRef = useRef(null);
   const signaturePhotoRef = useRef(null);
 
+  const textAreaRef = useRef();
+
+  const [isTextAreaFocused, setTextAreaFocus] = useState(false);
+
+  const handleCanvasFocus = () => {
+    console.log("canvas called")
+    setTextAreaFocus(false);
+  };
   // const signatureRef = useRef();
+
+
+  console.log("signature ref is : ", signatureRef.current.isEmpty())
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -59,7 +70,7 @@ const SecondPart = ({
     // Do something with the signature image, e.g., send it to the server, save it in state, etc.
     console.log(signatureImage);
   };
-  
+
 
   return (
     <div
@@ -144,8 +155,10 @@ const SecondPart = ({
             className="form-control"
             // id="exampleInputEmail1"
             // aria-describedby="emailHelp"
+            ref={textAreaRef}
+            onFocus={()=>setTextAreaFocus(true)}
             value={wishText}
-            onChange={(e)=>setWishText(e.target.value)}
+            onChange={(e) => setWishText(e.target.value)}
           />
         </div>
       </div>
@@ -239,19 +252,23 @@ const SecondPart = ({
               />
             </div>
           ) : (
-            <SignatureCanvas
-              ref={signatureRef}
-              penColor="black"
-              canvasProps={{
-                width: 250,
-                height: 100,
-                className: "signatureCanvas",
-                style: {
-                  border: "1px solid #7A7A7A",
-                  padding: "5px",
-                },
-              }}
-            />
+            <div style={{cursor:"pointer",backgroundColor:"white", padding:"0"}} onClick={()=>{console.log("hello")}}>
+
+              <SignatureCanvas
+                ref={signatureRef}
+                penColor="black"
+                onBegin={()=>textAreaRef.current.blur()}
+                canvasProps={{
+                  width: 300,
+                  height: 150,
+                  className: "signatureCanvas",
+                  style: {
+                    border: "1px solid #7A7A7A",
+                    padding: "5px",
+                  },
+                }}
+              />
+            </div>
           )}
         </div>
         <div style={{ width: "100%", textAlign: "center" }}>
