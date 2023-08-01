@@ -22,10 +22,6 @@ const SecondPart = ({
     console.log("canvas called")
     setTextAreaFocus(false);
   };
-  // const signatureRef = useRef();
-
-
-  console.log("signature ref is : ", signatureRef.current.isEmpty())
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
