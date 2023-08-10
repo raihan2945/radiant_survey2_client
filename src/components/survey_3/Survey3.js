@@ -108,11 +108,15 @@ const Survey3 = () => {
         centered={true}
       >
         <ModalBody>
-          <h1 style={{ fontSize: "1.5rem", color: "#58AB27" }}>
+          <div style={{textAlign:"center"}}>
+          <h1 style={{ fontSize: "1.5rem", color: "#ec293f" }}>
             Thank You!
           </h1>
           <hr />
-          <h4 style={{ fontSize: "1.2rem" }}>Your wish has been submitted</h4>
+          <h4 style={{ fontSize: "1rem", textAlign:"center" }}>Best of luck to our boys in Red & Green for the 2023 ICC Cricket World Cup</h4>
+          <h4 style={{ fontSize: "1rem", textAlign:"center", color:"#58ab27", fontWeight:"700"}}>COME ON TEAM BANGLADESH, BRING IT HOME</h4>
+          </div>
+            
           {/* <h6 style={{fontSize:".9rem"}}>Please check your mail to collect secret code</h6> */}
         </ModalBody>
       </Modal>
