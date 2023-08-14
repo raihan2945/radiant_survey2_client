@@ -44,10 +44,10 @@ const Survey3 = () => {
     // formData.append("signature", selectedSignatureImage);
     // formData.append("profile", selectedImage);
 
-    if (!selectedImage) {
-      alert("Please Upload a selfie photo");
-      return;
-    }
+    // if (!selectedImage) {
+    //   alert("Please Upload a selfie photo");
+    //   return;
+    // }
     if (!wishText) {
       alert("Please write wish text");
       return;
@@ -62,7 +62,7 @@ const Survey3 = () => {
       mio_code: mio_code,
       wish: wishText,
       signature: selectedSignatureImage || signatureRef.current.toDataURL(),
-      profile: selectedImage,
+      profile: selectedImage || "",
     };
 
     // return
