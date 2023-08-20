@@ -19,7 +19,7 @@ const FirstPart = ({ setPart, name, setName, mio_code, setMio_code }) => {
 
      </div>
       <div style={{ textAlign: 'center', marginBottom:"1rem"}}>
-      <img style={{width:"50%", objectFit:"contain"}} src="/images/naprosyn_logo.png"/>
+      <img style={{width:"60%", objectFit:"contain"}} src="/images/naprosyn_logo.png"/>
         <h1 style={{margin:0, marginTop:"1rem", textAlign: "center", fontSize: "20px", color: 'white', fontWeight: "700" }}>WISH FOR BANGLADESH NATIONAL CRICKET TEAM</h1>
       </div>
       <div
